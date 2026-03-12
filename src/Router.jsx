@@ -3,15 +3,15 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Error404 from './pages/Error404';
 
 export default function AppRouter() {
     return (
         <Routes>
-            {/* Si on arrive sur la page principale /, on va vers le login.
-            Ne le laisses pas dans le vide, envoies le de suite vers login */}
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<Error404 />} />
         </Routes>
     );
 }
