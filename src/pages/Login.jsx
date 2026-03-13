@@ -1,15 +1,16 @@
-import React from 'react';
-import Cookies from 'js-cookie';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'; // On importe la radio
 
 export default function Login() {
     const navigate = useNavigate();
 
-    // Fonction de connexion
+    // On allume pour récupérer le bouton Se connecter
+    const { login } = useContext(AuthContext);
+
     const handleLogin = () => {
-        // On stocke le Token dans un cookie
-        Cookies.set('auth_token', 'badge-secret-de-test');
-        // On part vers le dashboard
+        // On utilise la fonction du Contexte
+        login('badge-secret-de-test');
         navigate('/dashboard');
     };
 
