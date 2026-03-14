@@ -8,7 +8,7 @@ import Error404 from './pages/Error404';
 
 // LE VIGILE
 function ProtectedRoute({ children }) {
-    const token = Cookies.get('auth_token'); // Vérifie le cookie
+    const token = Cookies.get('auth_token'); // Vérifie le cookie, badge présent ? 
     if (!token) {
         return <Navigate to="/login" />; // Pas de badge = dehors 
     }

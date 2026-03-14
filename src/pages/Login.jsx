@@ -1,3 +1,4 @@
+//L'AUDITEUR
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext'; // On importe la radio
@@ -5,11 +6,11 @@ import { AuthContext } from '../context/AuthContext'; // On importe la radio
 export default function Login() {
     const navigate = useNavigate();
 
-    // On allume pour récupérer le bouton Se connecter
+    // On allume pour récupérer juste le bouton Se connecter
     const { login } = useContext(AuthContext);
 
     const handleLogin = () => {
-        // On utilise la fonction du Contexte
+        // On utilise la fonction du Contexte plus besoin du cookies
         login('badge-secret-de-test');
         navigate('/dashboard');
     };
