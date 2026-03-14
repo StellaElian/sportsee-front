@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-
 //j'importe notre radio (le Contexte) pour que le Vigile puisse l'entendre !
 import { AuthContext } from './context/AuthContext';
 
