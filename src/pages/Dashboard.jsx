@@ -5,8 +5,8 @@ import DistanceChart from '../components/DistanceChart';
 
 
 export default function Dashboard() {
-    // On allume la radio pour entendre le Token et le bouton de déconnexion
-    const { token, logout } = useContext(AuthContext);
+    // On allume la radio pour entendre le bouton de déconnexion
+    const { logout } = useContext(AuthContext);
     // On prend les données du premier utilisateur pour le test (Sophie)
     const userData = USER_MOCK_DATA[0];
 
