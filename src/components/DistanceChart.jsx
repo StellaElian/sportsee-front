@@ -49,7 +49,7 @@ export default function DistanceChart({ data }) {
     <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '15px', width: '445px', height: '484px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
       {/* --- L'EN-TÊTE AVEC LE BOUTON DES DATES --- */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px', width: '100%' }}>
+      <div style={{ display: 'flex', gap: '5px', alignItems: 'flex-start', marginBottom: '30px', width: '100%' }}>
 
         {/* Partie gauche */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -60,7 +60,7 @@ export default function DistanceChart({ data }) {
 
         {/* Partie droite (Date et flèches) */}
         {/* flexShrink: 0 est la commande magique qui INTERDIT au navigateur d'écraser ce bloc ! */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#20253A', fontSize: '14px', flexShrink: 0, height: '25px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#20253A', fontSize: '14px', flexShrink: 0, height: '25px' }}>
           <button style={{ border: '1px solid #E0E0E0', borderRadius: '50%', width: '25px', height: '25px', backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0, cursor: 'pointer' }}>{"<"}</button>
           <span style={{ whiteSpace: 'nowrap' }}>28 mai - 25 juin</span>
           <button style={{ border: '1px solid #E0E0E0', borderRadius: '50%', width: '25px', height: '25px', backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0, cursor: 'pointer' }}>{">"}</button>
@@ -72,7 +72,7 @@ export default function DistanceChart({ data }) {
       {/* J'utilise flex: 1 pour que le graphique s'étire bien dans la hauteur */}
       <div style={{ flex: 1, width: '100%', marginBottom: '20px' }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={formattedData}>
+          <BarChart data={formattedData} margin={{ top: 0, right: 45, left: -20, bottom: 0}}>
 
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
 
