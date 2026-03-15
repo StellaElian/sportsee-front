@@ -20,7 +20,7 @@ export default function ActivityCards() {
                 <p style={{ margin: 0, fontSize: '14px', fontWeight: '400', color: '#707070' }}>Durée d'activité</p>
                 <p style={{ margin: 0 }}>
                     <span style={{ fontSize: '22px', fontWeight: 'medium', color: '#0B23F4' }}>140</span>
-                    <span style={{ fontSize: '16px', color: '##B6BDFC', marginLeft: '4px' }}>minutes</span>
+                    <span style={{ fontSize: '16px', color: '#B6BDFC', marginLeft: '4px' }}>minutes</span>
                 </p>
             </div>
 
