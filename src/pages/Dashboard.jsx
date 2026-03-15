@@ -4,6 +4,7 @@ import { USER_MOCK_DATA } from '../data/mock';
 import DistanceChart from '../components/DistanceChart';
 import HeartRateChart from '../components/HeartRateChart';
 import WeeklyGoalChart from '../components/WeeklyGoalChart';
+import ActivityCards from '../components/ActivityCartds';
 
 
 export default function Dashboard() {
@@ -11,7 +12,6 @@ export default function Dashboard() {
     const { logout } = useContext(AuthContext);
     // On prend les données du premier utilisateur pour le test (Sophie)
     const userData = USER_MOCK_DATA[0];
-
 
     return (
         <div style={{ padding: '50px' }}>
@@ -29,16 +29,18 @@ export default function Dashboard() {
             <div>
                 <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold' }}>Cette semaine</p>
                 <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
-                
-                {/* Notre nouveau graphique Donut ! */}
-                <WeeklyGoalChart />
+
+                <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+                    <WeeklyGoalChart />
+                    <ActivityCards />
+                </div>
             </div>
 
-            <br/>
-            <br/>
-            
-            <button onClick={logout}>Se déconnecter</button>
+            <br />
+            <br />
 
+            <button onClick={logout}>Se déconnecter</button>
         </div>
     );
+
 }
