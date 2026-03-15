@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext'; // On importe la radio
 import { USER_MOCK_DATA } from '../data/mock';
 import DistanceChart from '../components/DistanceChart';
 import HeartRateChart from '../components/HeartRateChart';
+import WeeklyGoalChart from '../components/WeeklyGoalChart';
 
 
 export default function Dashboard() {
@@ -24,7 +25,18 @@ export default function Dashboard() {
                 <DistanceChart data={userData.runningData} />
                 <HeartRateChart data={userData.runningData} />
             </div>
+            {/* --- SECTION DU BAS (Cette semaine) --- */}
+            <div>
+                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold' }}>Cette semaine</p>
+                <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
+                
+                {/* Notre nouveau graphique Donut ! */}
+                <WeeklyGoalChart />
+            </div>
 
+            <br/>
+            <br/>
+            
             <button onClick={logout}>Se déconnecter</button>
 
         </div>
