@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext'; // On importe la radio
 import { USER_MOCK_DATA } from '../data/mock';
 import DistanceChart from '../components/DistanceChart';
+import HeartRateChart from '../components/HeartRateChart';
 
 
 export default function Dashboard() {
@@ -17,11 +18,15 @@ export default function Dashboard() {
             <p>Vos statistiques </p>
             <h1>{userData.userInfos.firstName} !</h1>
 
-            {/* affichage graphique + envoie de la liste "runningData" de Sophie */}
-            <DistanceChart data={userData.runningData} />
+            {/* --- GRAPHIQUE 163 BPM --- */}
+            <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
+                {/* affichage graphique + envoie de la liste "runningData" de Sophie */}
+                <DistanceChart data={userData.runningData} />
+                <HeartRateChart data={userData.runningData} />
+            </div>
 
-            <br />
             <button onClick={logout}>Se déconnecter</button>
+
         </div>
     );
 }
