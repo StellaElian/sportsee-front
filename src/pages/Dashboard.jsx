@@ -6,6 +6,7 @@ import HeartRateChart from '../components/HeartRateChart';
 import WeeklyGoalChart from '../components/WeeklyGoalChart';
 import ActivityCards from '../components/ActivityCards';
 import UserCard from '../components/UserCard';
+import Header from '../components/Header';
 
 
 export default function Dashboard() {
@@ -15,41 +16,40 @@ export default function Dashboard() {
     const userData = USER_MOCK_DATA[0];
 
     return (
-        // 1. AJOUT DU FOND ET DU CENTRAGE 
-        <div style={{ backgroundColor: '#F2F3FF', minHeight: '100vh', padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
-            {/* On garde ton bouton de déconnexion bien au chaud en haut */}
-            <div style={{ width: '1052px', display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
-                <button onClick={logout}>Se déconnecter</button>
-            </div>
+            {/* 1. LE HEADER TOUT EN HAUT */}
+            <Header />
+            <div style={{ backgroundColor: '#F2F3FF', flex: 1, padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-            {/* 2. ON AFFICHE LA NOUVELLE CARTE EN HAUT */}
-            <UserCard userInfos={userData.userInfos} runningData={userData.runningData} />
+                {/* 2. ON AFFICHE LA NOUVELLE CARTE EN HAUT */}
+                <UserCard userInfos={userData.userInfos} runningData={userData.runningData} />
 
-            <div style={{ height: '40px' }}></div>
+                <div style={{ height: '40px' }}></div>
 
-            {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
-            <div style={{ width: '1052px' }}>
+                {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
+                <div style={{ width: '1052px' }}>
 
-                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
+                    <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
 
-                {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
-                <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
-                    <DistanceChart data={userData.runningData} />
-                    <HeartRateChart data={userData.runningData} />
-                </div>
-
-                {/* --- SECTION DU BAS (graph Cette semaine) --- */}
-                <div>
-                    <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', margin: '0 0 5px 0' }}>Cette semaine</p>
-                    <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
-
-                    <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
-                        <WeeklyGoalChart />
-                        <ActivityCards />
+                    {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
+                    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                        <DistanceChart data={userData.runningData} />
+                        <HeartRateChart data={userData.runningData} />
                     </div>
-                </div>
 
+                    {/* --- SECTION DU BAS (graph Cette semaine) --- */}
+                    <div>
+                        <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', margin: '0 0 5px 0' }}>Cette semaine</p>
+                        <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
+
+                        <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+                            <WeeklyGoalChart />
+                            <ActivityCards />
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );
