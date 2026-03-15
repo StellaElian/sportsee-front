@@ -7,6 +7,7 @@ import WeeklyGoalChart from '../components/WeeklyGoalChart';
 import ActivityCards from '../components/ActivityCards';
 import UserCard from '../components/UserCard';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 export default function Dashboard() {
@@ -40,7 +41,7 @@ export default function Dashboard() {
 
                     {/* --- SECTION DU BAS (graph Cette semaine) --- */}
                     <div>
-                        <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', margin: '0 0 5px 0' }}>Cette semaine</p>
+                        <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', margin: '0 0 5px 0' }}>Cette semaine</p>
                         <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
 
                         <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
@@ -51,6 +52,7 @@ export default function Dashboard() {
 
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }
