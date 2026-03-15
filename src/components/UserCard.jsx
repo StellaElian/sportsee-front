@@ -1,4 +1,5 @@
 import photo_profil from '../assets/photo_profil.png';
+import OUTLINE from '../assets/OUTLINE.png';
 
 export default function UserCard({ userInfos, runningData }) {
 
@@ -57,13 +58,11 @@ export default function UserCard({ userInfos, runningData }) {
                     gap: '5px'                // Petit espace entre le chiffre et 'km'
                 }}>
                     {/* Le chiffre en blanc */}
+                    <img src={OUTLINE} alt="logo réussite" style={{width: '34px', height: '34px'}} />
                     <span style={{ color: '#FFFFFF', fontSize: '24px', fontWeight: '500' }}>
-                        {totalDistance}
+                        {totalDistance} km
                     </span>
-                    {/* Le 'km' en bleu clair (aligné sur la ligne de base du chiffre avec alignItems) */}
-                    <span style={{ color: '#B6BDFC', fontSize: '16px', fontWeight: '500', marginTop: '5px' }}>
-                        km
-                    </span>
+
                 </div>
             </div>
 

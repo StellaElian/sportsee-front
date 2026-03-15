@@ -28,7 +28,7 @@ export default function Dashboard() {
 
                 <div style={{ height: '40px' }}></div>
 
-                {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
+                {/* 3. ON ENGLOBE les GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
                 <div style={{ width: '1052px' }}>
 
                     <p style={{ fontSize: '22px', color: '#111111', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
