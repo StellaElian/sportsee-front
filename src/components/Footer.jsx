@@ -13,6 +13,7 @@ export default function Footer() {
             boxSizing: 'border-box',
             fontSize: '14px',
             fontWeight: '400',
+            fontFamily: 'Inter',
             color: '#111111',
             marginTop: 'auto' // Permet de bien le coller en bas de la page
         }}>

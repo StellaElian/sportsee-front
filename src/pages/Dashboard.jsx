@@ -31,7 +31,7 @@ export default function Dashboard() {
                 {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
                 <div style={{ width: '1052px' }}>
 
-                    <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
+                    <p style={{ fontSize: '22px', color: '#111111', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
 
                     {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
                     <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
@@ -41,8 +41,8 @@ export default function Dashboard() {
 
                     {/* --- SECTION DU BAS (graph Cette semaine) --- */}
                     <div>
-                        <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', margin: '0 0 5px 0' }}>Cette semaine</p>
-                        <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
+                        <p style={{ fontSize: '22px', color: '#111111', fontWeight: '500', margin: '0 0 5px 0' }}>Cette semaine</p>
+                        <p style={{ color: '#707070', fontSize: '16px', marginBottom: '20px', fontWeight: '500' }}>Du 23/06/2025 au 30/06/2025</p>
 
                         <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
                             <WeeklyGoalChart />
