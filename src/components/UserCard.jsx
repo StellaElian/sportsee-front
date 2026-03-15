@@ -13,7 +13,7 @@ export default function UserCard({ userInfos, runningData }) {
     return (
         // LE GRAND CADRE BLANC 
         <div style={{
-            backgroundColor: '#FFFFFF',
+            background: 'linear-gradient(0deg, #F2F3FF 0%, #FFFFFF 100%)',
             width: '1052px',
             height: '181px',
             borderRadius: '20px',
@@ -21,8 +21,7 @@ export default function UserCard({ userInfos, runningData }) {
             boxSizing: 'border-box',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center',
-            boxShadow: '0px 4px 84px -40px rgba(157, 167, 251, 0.4)'
+            alignItems: 'center'
         }}>
 
             {/* --- PARTIE GAUCHE (Image + Nom) --- */}
@@ -33,10 +32,10 @@ export default function UserCard({ userInfos, runningData }) {
                     style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                 />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    <h2 style={{ margin: 0, fontSize: '22px', fontWeight: '500', color: '#000000' }}>
+                    <h2 style={{ margin: 0, fontSize: '22px', fontWeight: '500', color: '#111111' }}>
                         {userInfos.firstName} {userInfos.lastName}
                     </h2>
-                    <p style={{ margin: 0, fontSize: '14px', color: '#707070' }}>
+                    <p style={{ margin: 0, fontSize: '14px', fontWeight: '400', color: '#707070' }}>
                         Membre depuis le {dateInscription}
                     </p>
                 </div>
