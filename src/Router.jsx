@@ -5,6 +5,7 @@ import { AuthContext } from './context/AuthContext';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Profil from './pages/Profil';
 import Error404 from './pages/Error404';
 
 // LE VIGILE
@@ -29,6 +30,15 @@ export default function AppRouter() {
                 element={
                     <ProtectedRoute>
                         <Dashboard />
+                    </ProtectedRoute>
+                }
+            />
+             {/*On enferme le profil derrière le Vigile */}
+            <Route
+                path="/profil"
+                element={
+                    <ProtectedRoute>
+                        <Profil />
                     </ProtectedRoute>
                 }
             />
