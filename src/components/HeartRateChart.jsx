@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function HeartRateChart({ data }) {
-  
+
   // --- 1. LE ROBOT FORMATTEUR ---
   // On prend les 7 premiers jours et on extrait le min, max et average.
   const jours = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
@@ -32,15 +32,16 @@ export default function HeartRateChart({ data }) {
   });
 
   return (
-    <div style={{ backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '15px', width: '400px' }}>
-      
+    // AJOUT DE FLEXBOX ICI POUR GERER LA HAUTEUR DE 484px
+    <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '15px', width: '583px', boxSizing: 'border-box', height: '484px', display: 'flex', flexDirection: 'column' }}>
+
       {/* --- 2. L'EN-TÊTE (Alignement strict comme le précédent) --- */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px', width: '100%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <h3 style={{ color: '#D92C2C', margin: 0, fontSize: '18px', whiteSpace: 'nowrap', lineHeight: '25px' }}>163 BPM</h3>
           <p style={{ color: '#707070', fontSize: '12px', margin: 0, whiteSpace: 'nowrap' }}>Fréquence cardiaque moyenne</p>
         </div>
-        
+
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#20253A', fontSize: '14px', flexShrink: 0, height: '25px' }}>
           <button style={{ border: '1px solid #E0E0E0', borderRadius: '50%', width: '25px', height: '25px', backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 0, cursor: 'pointer' }}>{"<"}</button>
           <span style={{ whiteSpace: 'nowrap' }}>28 mai - 04 juin</span>
@@ -49,32 +50,33 @@ export default function HeartRateChart({ data }) {
       </div>
 
       {/* --- 3. LE GRAPHIQUE COMPOSÉ --- */}
-      <div style={{ height: '220px', width: '100%' }}>
+      {/* REMPLACEMENT DE HEIGHT 220px PAR FLEX 1 POUR QU'IL REMPLISSE L'ESPACE */}
+      <div style={{ flex: 1, width: '100%', marginBottom: '20px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={formattedData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
-            
+
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            
+
             <XAxis dataKey="jour" tick={{ fill: '#9B9EAC' }} tickLine={false} axisLine={{ stroke: '#282D30' }} tickMargin={10} />
-            
+
             {/* L'axe Y : On lui dit de s'adapter aux battements de coeur (ex: de 130 à 190) */}
             <YAxis tick={{ fill: '#9B9EAC' }} tickLine={false} axisLine={{ stroke: '#282D30' }} tickMargin={10} domain={['dataMin - 5', 'dataMax + 5']} />
-            
+
             <Tooltip content={<CustomTooltip />} cursor={false} />
-            
+
             {/* Les 2 barres (elles vont se mettre côte à côte toutes seules !) */}
             <Bar dataKey="min" fill="#F4B4B4" radius={[10, 10, 10, 10]} barSize={8} />
             <Bar dataKey="max" fill="#D92C2C" radius={[10, 10, 10, 10]} barSize={8} />
-            
+
             {/* La ligne bleue qui ondule (monotone) par dessus les barres */}
             <Line type="monotone" dataKey="average" stroke="#0B23F4" strokeWidth={3} dot={{ r: 4, fill: '#0B23F4' }} />
-            
+
           </ComposedChart>
         </ResponsiveContainer>
       </div>
 
-      {/* --- 4. LA LÉGENDE CORRIGÉE --- */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginTop: '10px', fontSize: '12px', color: '#9B9EAC', fontWeight: 'bold' }}>
+      {/* --- 4. LA LÉGENDE --- */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginTop: 'auto', fontSize: '12px', color: '#9B9EAC', fontWeight: 'medium' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#F4B4B4' }}></div> Min
         </div>

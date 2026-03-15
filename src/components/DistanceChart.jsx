@@ -45,8 +45,8 @@ export default function DistanceChart({ data }) {
   ];
 
   return (
-    // on affiche juste pour le moment: la boîte blanche et le titre
-    <div style={{ backgroundColor: '#FFFFFF', padding: '20px', borderRadius: '15px', width: '400px' }}>
+    // On met la largeur à 445px, la hauteur à 484px et on utilise display flex !
+    <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '15px', width: '445px', height: '484px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
       {/* --- L'EN-TÊTE AVEC LE BOUTON DES DATES --- */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '30px', width: '100%' }}>
@@ -69,7 +69,8 @@ export default function DistanceChart({ data }) {
       </div>
 
       {/* --- LE GRAPHIQUE --- */}
-      <div style={{ height: '220px', width: '100%' }}>
+      {/* J'utilise flex: 1 pour que le graphique s'étire bien dans la hauteur */}
+      <div style={{ flex: 1, width: '100%', marginBottom: '20px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={formattedData}>
 
@@ -95,8 +96,8 @@ export default function DistanceChart({ data }) {
       </div>
 
       {/* --- LA PETITE LÉGENDE "Km" EN BAS --- */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '10px' }}>
-        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#3135D8' }}></div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: 'auto' }}>
+        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0B23F4' }}></div>
         <span style={{ color: '#9B9EAC', fontSize: '14px', fontWeight: 'bold' }}>Km</span>
       </div>
 

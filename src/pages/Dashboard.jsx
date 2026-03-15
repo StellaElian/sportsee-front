@@ -31,10 +31,10 @@ export default function Dashboard() {
             {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
             <div style={{ width: '1052px' }}>
 
-                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', marginBottom: '20px' }}>Vos dernières performances</p>
+                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
 
                 {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
-                <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
                     <DistanceChart data={userData.runningData} />
                     <HeartRateChart data={userData.runningData} />
                 </div>
