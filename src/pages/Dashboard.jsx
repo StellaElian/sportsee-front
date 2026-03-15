@@ -4,7 +4,8 @@ import { USER_MOCK_DATA } from '../data/mock';
 import DistanceChart from '../components/DistanceChart';
 import HeartRateChart from '../components/HeartRateChart';
 import WeeklyGoalChart from '../components/WeeklyGoalChart';
-import ActivityCards from '../components/ActivityCartds';
+import ActivityCards from '../components/ActivityCards';
+import UserCard from '../components/UserCard';
 
 
 export default function Dashboard() {
@@ -14,33 +15,42 @@ export default function Dashboard() {
     const userData = USER_MOCK_DATA[0];
 
     return (
-        <div style={{ padding: '50px' }}>
-            {/* On utilise les vraies données de Sophie pour lui dire bonjour */}
-            <p>Vos statistiques </p>
-            <h1>{userData.userInfos.firstName} !</h1>
+        // 1. AJOUT DU FOND ET DU CENTRAGE 
+        <div style={{ backgroundColor: '#F2F3FF', minHeight: '100vh', padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-            {/* --- GRAPHIQUE 163 BPM --- */}
-            <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-                {/* affichage graphique + envoie de la liste "runningData" de Sophie */}
-                <DistanceChart data={userData.runningData} />
-                <HeartRateChart data={userData.runningData} />
+            {/* On garde ton bouton de déconnexion bien au chaud en haut */}
+            <div style={{ width: '1052px', display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
+                <button onClick={logout}>Se déconnecter</button>
             </div>
-            {/* --- SECTION DU BAS (Cette semaine) --- */}
-            <div>
-                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold' }}>Cette semaine</p>
-                <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
 
-                <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-                    <WeeklyGoalChart />
-                    <ActivityCards />
+            {/* 2. ON AFFICHE LA NOUVELLE CARTE EN HAUT */}
+            <UserCard userInfos={userData.userInfos} runningData={userData.runningData} />
+
+            <div style={{ height: '40px' }}></div>
+
+            {/* 3. ON ENGLOBE Tles GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
+            <div style={{ width: '1052px' }}>
+
+                <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', marginBottom: '20px' }}>Vos dernières performances</p>
+
+                {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
+                <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                    <DistanceChart data={userData.runningData} />
+                    <HeartRateChart data={userData.runningData} />
                 </div>
+
+                {/* --- SECTION DU BAS (graph Cette semaine) --- */}
+                <div>
+                    <p style={{ fontSize: '18px', color: '#20253A', fontWeight: 'bold', margin: '0 0 5px 0' }}>Cette semaine</p>
+                    <p style={{ color: '#9B9EAC', fontSize: '14px', marginBottom: '20px' }}>Du 23/06/2025 au 30/06/2025</p>
+
+                    <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+                        <WeeklyGoalChart />
+                        <ActivityCards />
+                    </div>
+                </div>
+
             </div>
-
-            <br />
-            <br />
-
-            <button onClick={logout}>Se déconnecter</button>
         </div>
     );
-
 }
