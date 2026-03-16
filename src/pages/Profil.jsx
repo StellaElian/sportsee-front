@@ -36,7 +36,7 @@ export default function Profil() {
                 <div style={{ display: 'flex', gap: '57px', width: '1140px' }}>
 
                     {/* --- COLONNE DE GAUCHE --- */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
                         {/* --- LA NOUVELLE BOÎTE PHOTO --- */}
                         <div style={{ 
