@@ -41,7 +41,7 @@ export default function Login() {
                             <label style={{ fontSize: '14px', fontWeight: '400', color: '#707070', marginBottom: '8px' }}>Adresse email</label>
                             <input
                                 type="email"
-                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171',  marginBottom: '24px' }}
+                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171',  marginBottom: '24px', fontSize: '14px', fontWeight: '400', color: '#707070' }}
                             />
                         </div>
 
