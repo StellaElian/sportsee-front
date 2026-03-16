@@ -1,4 +1,3 @@
-import photo_profil from '../assets/photo_profil.png';
 import OUTLINE from '../assets/OUTLINE.png';
 
 export default function UserCard({ userInfos, runningData }) {
@@ -28,10 +27,11 @@ export default function UserCard({ userInfos, runningData }) {
             {/* --- PARTIE GAUCHE (Image + Nom) --- */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
                 <img
-                    src={photo_profil}
-                    alt={`Profil de ${userInfos.firstName}`}
+                    src={userData.userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
+                    alt="Photo de profil"
                     style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                 />
+
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                     <h2 style={{ margin: 0, fontSize: '22px', fontWeight: '500', color: '#111111' }}>
                         {userInfos.firstName} {userInfos.lastName}
@@ -58,7 +58,7 @@ export default function UserCard({ userInfos, runningData }) {
                     gap: '5px'                // Petit espace entre le chiffre et 'km'
                 }}>
                     {/* Le chiffre en blanc */}
-                    <img src={OUTLINE} alt="logo réussite" style={{width: '34px', height: '34px'}} />
+                    <img src={OUTLINE} alt="logo réussite" style={{ width: '34px', height: '34px' }} />
                     <span style={{ color: '#FFFFFF', fontSize: '24px', fontWeight: '500' }}>
                         {totalDistance} km
                     </span>

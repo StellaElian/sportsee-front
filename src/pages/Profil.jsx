@@ -39,21 +39,22 @@ export default function Profil() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
                         {/* --- LA NOUVELLE BOÎTE PHOTO --- */}
-                        <div style={{ 
-                            backgroundColor: '#FFFFFF', 
-                            borderRadius: '10px', 
-                            padding: '40px', 
-                            width: '508px', 
-                            boxSizing: 'border-box', 
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            gap: '24px' 
+                        <div style={{
+                            backgroundColor: '#FFFFFF',
+                            borderRadius: '10px',
+                            padding: '40px',
+                            width: '508px',
+                            boxSizing: 'border-box',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '24px'
                         }}>
-                            <img 
-                                src={photo_profil} 
-                                alt="Photo de profil" 
-                                style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }} 
+                            <img
+                                src={userData.userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
+                                alt="Photo de profil"
+                                style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                             />
+
                             <div>
                                 <h2 style={{ margin: 0, fontSize: '22px', fontWeight: '500', color: '#111111' }}>
                                     {userData.userInfos.firstName} {userData.userInfos.lastName}
