@@ -26,7 +26,7 @@ export default function Login() {
             <div style={{ flex: 1, paddingTop: '55px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
                 {/* Le Logo */}
-                <img src={logo} alt="Logo SportSee" style={{ height: '23.41px', marginRight: '375px' }} />
+                <img src={logo} alt="Logo SportSee" style={{ height: '23.41px', marginRight: '260px' }} />
 
                 {/* Le bloc du formulaire */}
                 <div style={{ marginTop: '151px', width: '398px', backgroundColor: '#FFFFFF', borderRadius: '10px', marginLeft: 'auto', marginRight: 'auto', padding: '40px', boxSizing: 'border-box' }}>
@@ -34,7 +34,7 @@ export default function Login() {
                         Transformez <br /> vos stats en résultats
                     </h1>
 
-                    <form style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginBottom: '40px' }}>
+                    <form style={{ display: 'flex', flexDirection: 'column' }}>
 
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <label style={{ fontSize: '22px', fontWeight: '500', color: '#111111', marginBottom: '24px' }}>Se connecter</label>
