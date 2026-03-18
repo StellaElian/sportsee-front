@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext'; // On importe la radio
-import { USER_MOCK_DATA } from '../data/mock';
+import { useFetch } from '../utils/hooks';
 import DistanceChart from '../components/DistanceChart';
 import HeartRateChart from '../components/HeartRateChart';
 import WeeklyGoalChart from '../components/WeeklyGoalChart';
@@ -13,8 +13,20 @@ import Footer from '../components/Footer';
 export default function Dashboard() {
     // On allume la radio pour entendre le bouton de déconnexion
     const { logout } = useContext(AuthContext);
-    // On prend les données du premier utilisateur pour le test (Sophie)
-    const userData = USER_MOCK_DATA[0];
+    // (On lance la canne à pêche vers le vrai serveur (par exemple sophie id: 123))
+    const { data, isLoading, error } = useFetch('http://localhost:8000/user/123');
+
+    //etats
+    if (isLoading) {
+        return <div style={{ textAlign: 'center', marginTop: '100px', fontSize: '24px' }}>Patience, on pêche les données... 🎣</div>;
+    }
+
+    if (error) {
+        return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
+    }
+
+    const userData = data;
+
 
     return (
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -52,7 +64,7 @@ export default function Dashboard() {
 
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }
