@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react'; // <-- Ajout de useContext
+import { AuthContext } from '../context/AuthContext'; // <-- On importe la poche au bracelet VIP
+import { useFetch } from '../utils/hooks'; 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Profilinfo from '../components/Profilinfo';
 import StatCard from '../components/StatCard';
-// Images
-import photo_profil from '../assets/photo_profil.png';
 
-// On importe tes fausses données du backend !
-import { USER_MOCK_DATA } from '../data/mock';
 
 export default function Profil() {
-    // On récupère toutes les données du premier utilisateur du mock 
-    const userData = USER_MOCK_DATA[0];
+    // 1.récupèration du bracelet VIP
+    const { token } = useContext(AuthContext);
+
+    // lancement cap vers les infos de l'utilisateur
+    const { data, isLoading, error } = useFetch('http://localhost:8000/api/user-info', token);
+
+    // pancartes d'attente
+    if (isLoading) return <div style={{ textAlign: 'center', marginTop: '100px', fontSize: '24px' }}>Chargement du profil... ⏳</div>;
+    if (error || !data) return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Erreur serveur 🚨</div>;
+
+    // On extrait les données du vrai serveur
+    const userInfos = data.profile;
+    const stats = data.statistics; // Le backend nous donne gentiment ces calculs 
 
     // --- LES CALCULS POUR LES CARTES STATISTIQUES ---
-    // On calcule la durée totale en minutes
-    const totalMinutes = userData.runningData.reduce((total, jour) => total + jour.duration, 0);
-    const heures = Math.floor(totalMinutes / 60);
-    const minutesRestantes = totalMinutes % 60;
+    const heures = Math.floor(stats.totalDuration / 60);
+    const minutesRestantes = stats.totalDuration % 60;
+    
+    const totalDistance = stats.totalDistance; // Déjà calculé par le backend
+    const totalSessions = stats.totalSessions; // Déjà calculé par le backend
 
-    // On calcule les autres totaux
-    const totalDistance = userData.runningData.reduce((total, jour) => total + jour.distance, 0).toFixed(0);
-    const totalCalories = userData.runningData.reduce((total, jour) => total + jour.caloriesBurned, 0);
-    const totalSessions = userData.runningData.length;
-    // (Pour le nombre de jours de repos, on met un chiffre fictif en attendant, par ex: 9)
-    const joursDeRepos = 9;
+
+    const totalCalories = stats.totalCalories; 
+    const joursDeRepos = 9; // on garde le chiffre fictif---------------A MODIFIER APRES
+
 
 
     return (
@@ -38,7 +46,7 @@ export default function Profil() {
                     {/* --- COLONNE DE GAUCHE --- */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
-                        {/* --- LA NOUVELLE BOÎTE PHOTO --- */}
+                        {/* --- BOÎTE PHOTO --- */}
                         <div style={{
                             backgroundColor: '#FFFFFF',
                             borderRadius: '10px',
@@ -50,14 +58,14 @@ export default function Profil() {
                             gap: '24px'
                         }}>
                             <img
-                                src={userData.userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
+                                src={userInfos.profilePicture} // <-- On utilise le lien qui vient du backend 
                                 alt="Photo de profil"
                                 style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                             />
 
                             <div>
                                 <h2 style={{ margin: 0, fontSize: '22px', fontWeight: '500', color: '#111111' }}>
-                                    {userData.userInfos.firstName} {userData.userInfos.lastName}
+                                    {userInfos.firstName} {userInfos.lastName}
                                 </h2>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#707070', fontWeight: '400' }}>
                                     Membre depuis le 14 juin 2023
@@ -66,7 +74,7 @@ export default function Profil() {
                         </div>
 
                         {/*On "passe" les vraies données de l'utilisateur (userInfos) au composant ProfilInfo grâce aux "props" */}
-                        <Profilinfo userInfos={userData.userInfos} />
+                        <Profilinfo userInfos={userInfos} />
                     </div>
 
                     {/* --- COLONNE DE DROITE (5 cartes) --- */}

@@ -4,8 +4,14 @@ import line from '../assets/line.png';
 // On réceptionne les "userInfos" qui ont été envoyées par la page Profil
 export default function ProfilInfo({ userInfos }) {
 
-    // --- ROBOTS TRADUCTEURS ---Traduction le genre de l'anglais vers le français
-    const genreFR = userInfos.gender === 'female' ? 'Femme' : 'Homme';
+    // TRADUCTEUR: On gère l'anglais ET le français du backend !
+    let genreFR = "Non précisé";
+    if (userInfos.gender === 'female' || userInfos.gender === 'femme' || userInfos.gender === 'Femme') {
+        genreFR = "Femme";
+    } else if (userInfos.gender === 'male' || userInfos.gender === 'homme' || userInfos.gender === 'Homme') {
+        genreFR = "Homme";
+    }
+
 
     // On transforme la taille 
     const tailleMetre = Math.floor(userInfos.height / 100); // Récupère le "1"
