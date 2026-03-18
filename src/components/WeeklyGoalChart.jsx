@@ -55,7 +55,7 @@ export default function WeeklyGoalChart({nombre}) {
                 {/* Étiquette : 4 réalisées (En bas à gauche de la boîte de 306x190) */}
                 <div style={{ position: 'absolute', bottom: '0px', left: '0px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0B23F4' }}></div>
-                    <span style={{ fontSize: '12px', color: '#707070', fontWeight: '400' }}>4 réalisées</span>
+                    <span style={{ fontSize: '12px', color: '#707070', fontWeight: '400' }}>{nombre}réalisées</span>
                 </div>
 
             </div>
