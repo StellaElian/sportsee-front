@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ActivityCards() {
+export default function ActivityCards({distance, duree}) {
     return (
         // Le conteneur global :centrage vertical
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: '16px', height: '342px' }}>
@@ -19,7 +19,7 @@ export default function ActivityCards() {
             }}>
                 <p style={{ margin: 0, fontSize: '14px', fontWeight: '400', color: '#707070' }}>Durée d'activité</p>
                 <p style={{ margin: 0}}>
-                    <span style={{ fontSize: '22px', fontWeight: 'medium', color: '#0B23F4' }}>140</span>
+                    <span style={{ fontSize: '22px', fontWeight: 'medium', color: '#0B23F4' }}>{duree}</span>
                     <span style={{ fontSize: '16px', color: '#B6BDFC', marginLeft: '4px' }}>minutes</span>
                 </p>
             </div>
@@ -38,7 +38,7 @@ export default function ActivityCards() {
             }}>
                 <p style={{ margin: 0, fontSize: '14px', fontWeight: '400', color: '#707070' }}>Distance totale parcourue</p>
                 <p style={{ margin: 0 }}>
-                    <span style={{ fontSize: '22px', fontWeight: '500', color: '#F4320B' }}>21.7</span>
+                    <span style={{ fontSize: '22px', fontWeight: '500', color: '#F4320B' }}>{distance}</span>
                     <span style={{ fontSize: '16px', fontWeight: '500', color: '#FCC1B6', marginLeft: '4px' }}>kilomètres</span>
                 </p>
             </div>
