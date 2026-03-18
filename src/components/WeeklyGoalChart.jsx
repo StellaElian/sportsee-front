@@ -7,7 +7,7 @@ const data = [
     { name: 'restants', value: 2, color: '#B6BDFC' } 
 ];
 
-export default function WeeklyGoalChart() {
+export default function WeeklyGoalChart({nombre}) {
     return (
         // LE GRAND ENCADRÉ
         <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '10px', width: '450px', height: '342px', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
@@ -15,7 +15,7 @@ export default function WeeklyGoalChart() {
             {/* L'EN-TÊTE DU GRAPHIQUE */}
             <div style={{ marginBottom: '30px' }}>
                 <h3 style={{ margin: '0 0 5px 0', fontSize: '16px', color: '#B6BDFC' }}>
-                    <span style={{ color: '#0B23F4', fontSize: '28px', fontWeight: '600' }}>x4</span> sur objectif de 6
+                    <span style={{ color: '#0B23F4', fontSize: '28px', fontWeight: '600' }}>x{nombre}</span> sur objectif de 6
                 </h3>
                 <p style={{ margin: 0, fontSize: '14px', color: '#707070', fontWeight: '400' }}>Courses hebdomadaires réalisées</p>
             </div>

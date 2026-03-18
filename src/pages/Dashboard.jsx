@@ -29,11 +29,16 @@ export default function Dashboard() {
         return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
     }
 
-    // TRADUCTEUR : On rassemble les deux pêches 
     const userData = {
         userInfos: infoData.profile,
-        runningData: activityData // On branche les vraies courses 
+        runningData: activityData 
     };
+
+    // Si activityData existe, on compte le nombre de courses, sinon on met 0
+    const nombreDeCourses = activityData ? activityData.length : 0; 
+    const totalDistance = activityData ? activityData.reduce((total, jour) => total + jour.distance, 0).toFixed(1) : 0;
+    const totalDuree = activityData ? activityData.reduce((total, jour) => total + jour.duration, 0) : 0;
+
 
     return (
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -61,8 +66,8 @@ export default function Dashboard() {
                         <p style={{ color: '#707070', fontSize: '16px', marginBottom: '20px', fontWeight: '500' }}>Du 23/06/2025 au 30/06/2025</p>
 
                         <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
-                            <WeeklyGoalChart />
-                            <ActivityCards />
+                            <WeeklyGoalChart nombre={nombreDeCourses} />
+                            <ActivityCards distance={totalDistance} duree={totalDuree} />
                         </div>
                     </div>
 
