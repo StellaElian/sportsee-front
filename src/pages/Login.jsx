@@ -1,22 +1,54 @@
 //L'AUDITEUR
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext'; //le moteur (la radio)
-
 // Les images
 import logo from '../assets/Logo.svg';
 import loginpicture from '../assets/loginpicture.png';
 
+
+
+
 export default function Login() {
+    // --- LES VARIABLES QUI LISENT TES CASES ---
+    const [usernameInput, setUsernameInput] = useState("");
+    const [passwordInput, setPasswordInput] = useState("");
+    const [erreurTexte, setErreurTexte] = useState("");
+
     // --- LE MOTEUR (Ton code logique) ---
     const navigate = useNavigate();
     const { login } = useContext(AuthContext); // On récupère la fonction pour donner le badge
 
-    const handleLogin = (e) => {
-        e.preventDefault(); // Empêche la page de clignoter quand on clique
-        login('badge-secret-de-test'); // On donne le faux badge
-        navigate('/dashboard'); // On ouvre la porte vers le Dashboard 
+    // --- LE MOTEUR (La vraie connexion !) ---
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setErreurTexte("");
+
+        try {
+            const response = await fetch('http://localhost:8000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: usernameInput, // On envoie ce qui es tapé !
+                    password: passwordInput  // On envoie ce qui es tapé !
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.token) {
+                login(data.token); // On récupère le bracelet VIP
+                navigate('/dashboard'); // On ouvre les portes !
+            } else {
+                // On affiche la vraie raison du refus 
+                setErreurTexte(data.message || "Identifiants incorrects !");
+            }
+        } catch (err) {
+            setErreurTexte("Le serveur est éteint ou inaccessible !");
+        }
     };
+
+
 
     // --- Le visuel ---
     return (
@@ -41,7 +73,9 @@ export default function Login() {
                             <label style={{ fontSize: '14px', fontWeight: '400', color: '#707070', marginBottom: '8px' }}>Adresse email</label>
                             <input
                                 type="email"
-                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171',  marginBottom: '24px', fontSize: '14px', fontWeight: '400', color: '#707070' }}
+                                value={usernameInput}
+                                onChange={(e) => setUsernameInput(e.target.value)}
+                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171', marginBottom: '24px', fontSize: '14px', fontWeight: '400', color: '#707070' }}
                             />
                         </div>
 
@@ -49,6 +83,8 @@ export default function Login() {
                             <label style={{ fontSize: '14px', fontWeight: '400', color: '#707070', marginBottom: '8px' }}>Mot de passe</label>
                             <input
                                 type="password"
+                                value={passwordInput}
+                                onChange={(e) => setPasswordInput(e.target.value)}
                                 style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171' }}
                             />
                         </div>

@@ -12,9 +12,9 @@ import Footer from '../components/Footer';
 
 export default function Dashboard() {
     // On allume la radio pour entendre le bouton de déconnexion
-    const { logout } = useContext(AuthContext);
+    const { logout, token } = useContext(AuthContext);
     // (On lance la canne à pêche vers le vrai serveur (par exemple sophie id: 123))
-    const { data, isLoading, error } = useFetch('http://localhost:8000/user/123');
+    const { data, isLoading, error } = useFetch('http://localhost:8000/api/user-info', token);
 
     //etats
     if (isLoading) {
@@ -25,7 +25,10 @@ export default function Dashboard() {
         return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
     }
 
-    const userData = data;
+    const userData = {
+        userInfos: data.profile,
+        runningData: []
+    };
 
 
     return (

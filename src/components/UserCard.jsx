@@ -27,7 +27,7 @@ export default function UserCard({ userInfos, runningData }) {
             {/* --- PARTIE GAUCHE (Image + Nom) --- */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
                 <img
-                    src={userData.userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
+                    src={userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
                     alt="Photo de profil"
                     style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                 />
