@@ -17,33 +17,37 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-// On commence par créer notre brique principale
+// brique principale
 export default function DistanceChart({ data }) {
-  //petit tableau de 4 cases (S1, S2, S3, S4)
+  // 1. Sécurité : si data n'est pas encore arrivé, on met un tableau vide
+  const safeData = data || [];
 
+  // (On calcule + divise le total des courses par 4)
+  const chunkSize = Math.ceil(safeData.length / 4) || 1;
+
+  //On remplit nos 4 semaines
   const formattedData = [
     {
       nomDeLaBarre: 'S1',
-      distanceEnKm: data.slice(0, 7).reduce((total, jour) => total + jour.distance, 0),
+      distanceEnKm: safeData.slice(0, chunkSize).reduce((total, jour) => total + jour.distance, 0).toFixed(1),
       date: '28 mai - 04 juin'
     },
     {
       nomDeLaBarre: 'S2',
-      distanceEnKm: data.slice(7, 14).reduce((total, jour) => total + jour.distance, 0),
+      distanceEnKm: safeData.slice(chunkSize, chunkSize * 2).reduce((total, jour) => total + jour.distance, 0).toFixed(1),
       date: '05 juin - 11 juin'
     },
     {
       nomDeLaBarre: 'S3',
-      distanceEnKm: data.slice(14, 21).reduce((total, jour) => total + jour.distance, 0),
+      distanceEnKm: safeData.slice(chunkSize * 2, chunkSize * 3).reduce((total, jour) => total + jour.distance, 0).toFixed(1),
       date: '12 juin - 18 juin'
     },
     {
       nomDeLaBarre: 'S4',
-      distanceEnKm: data.slice(21, 28).reduce((total, jour) => total + jour.distance, 0),
+      distanceEnKm: safeData.slice(chunkSize * 3).reduce((total, jour) => total + jour.distance, 0).toFixed(1),
       date: '19 juin - 25 juin'
     }
   ];
-
   return (
     // On met la largeur à 445px, la hauteur à 484px et on utilise display flex !
     <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '10px', width: '445px', height: '484px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
