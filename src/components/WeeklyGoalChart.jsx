@@ -1,14 +1,20 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-// --- LES DONNÉES ---
-const data = [
-    { name: 'réalisées', value: 4, color: '#0B23F4' }, 
-    { name: 'restants', value: 2, color: '#B6BDFC' } 
-];
 
-export default function WeeklyGoalChart({nombre}) {
+
+
+export default function WeeklyGoalChart({ nombre }) {
+    // On calcule les restants (objectif 6)
+    const restants = 6 - nombre < 0 ? 0 : 6 - nombre;
+    // --- LES DONNÉES ---
+    const data = [
+        { name: 'réalisées', value: nombre, color: '#0B23F4' },
+        { name: 'restants', value: restants, color: '#B6BDFC' },
+    ];
+    
     return (
+
         // LE GRAND ENCADRÉ
         <div style={{ backgroundColor: '#FFFFFF', padding: '30px', borderRadius: '10px', width: '450px', height: '342px', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
 
@@ -49,7 +55,7 @@ export default function WeeklyGoalChart({nombre}) {
                 {/* Étiquette : 2 restants (En haut à droite de la boîte de 306x190) */}
                 <div style={{ position: 'absolute', top: '0px', right: '0px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B6BDFC' }}></div>
-                    <span style={{ fontSize: '12px', color: '#707070', fontWeight: '400' }}>2 restants</span>
+                    <span style={{ fontSize: '12px', color: '#707070', fontWeight: '400' }}>{restants} restants</span>
                 </div>
 
                 {/* Étiquette : 4 réalisées (En bas à gauche de la boîte de 306x190) */}
