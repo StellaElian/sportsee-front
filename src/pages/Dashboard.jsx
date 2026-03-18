@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; // On importe la radio
+import { AuthContext } from '../context/AuthContext'; 
 import { useFetch } from '../utils/hooks';
 import DistanceChart from '../components/DistanceChart';
 import HeartRateChart from '../components/HeartRateChart';
@@ -13,37 +13,38 @@ import Footer from '../components/Footer';
 export default function Dashboard() {
     // On allume la radio pour entendre le bouton de déconnexion
     const { logout, token } = useContext(AuthContext);
-    // (On lance la canne à pêche vers le vrai serveur (par exemple sophie id: 123))
-    const { data, isLoading, error } = useFetch('http://localhost:8000/api/user-info', token);
 
-    //etats
-    if (isLoading) {
+    // 🎣 Cap 1 : Les infos du profil (nom, photo...)
+    const { data: infoData, isLoading: infoLoading, error: infoError } = useFetch('http://localhost:8000/api/user-info', token);
+
+    // 🎣 Cap 2 : Les activités sportives (les graphiques !)
+    const { data: activityData, isLoading: activityLoading, error: activityError } = useFetch('http://localhost:8000/api/user-activity?startWeek=2025-05-28&endWeek=2025-06-30', token);
+
+    // On surveille nos deux cap en même temps
+    if (infoLoading || activityLoading) {
         return <div style={{ textAlign: 'center', marginTop: '100px', fontSize: '24px' }}>Patience, on pêche les données... 🎣</div>;
     }
 
-    if (error) {
+    if (infoError || activityError || !infoData || !activityData) {
         return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
     }
 
+    // TRADUCTEUR : On rassemble les deux pêches 
     const userData = {
-        userInfos: data.profile,
-        runningData: []
+        userInfos: infoData.profile,
+        runningData: activityData // On branche les vraies courses 
     };
-
 
     return (
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
-            {/* 1. LE HEADER TOUT EN HAUT */}
             <Header />
             <div style={{ backgroundColor: '#F2F3FF', flex: 1, padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-                {/* 2. ON AFFICHE LA NOUVELLE CARTE EN HAUT */}
                 <UserCard userInfos={userData.userInfos} runningData={userData.runningData} />
 
                 <div style={{ height: '40px' }}></div>
 
-                {/* 3. ON ENGLOBE les GRAPHIQUES DANS UNE BOÎTE DE 1052px POUR ALIGNER AVEC LA CARTE */}
                 <div style={{ width: '1052px' }}>
 
                     <p style={{ fontSize: '22px', color: '#111111', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
@@ -54,7 +55,7 @@ export default function Dashboard() {
                         <HeartRateChart data={userData.runningData} />
                     </div>
 
-                    {/* --- SECTION DU BAS (graph Cette semaine) --- */}
+                    {/* --- graph Cette semaine --- */}
                     <div>
                         <p style={{ fontSize: '22px', color: '#111111', fontWeight: '500', margin: '0 0 5px 0' }}>Cette semaine</p>
                         <p style={{ color: '#707070', fontSize: '16px', marginBottom: '20px', fontWeight: '500' }}>Du 23/06/2025 au 30/06/2025</p>
