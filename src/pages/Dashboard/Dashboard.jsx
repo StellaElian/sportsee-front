@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; 
-import { useFetch } from '../utils/hooks';
-import DistanceChart from '../components/DistanceChart/DistanceChart';
-import HeartRateChart from '../components/HeartRateChart/HeartRateChart';
-import WeeklyGoalChart from '../components/WeeklyGoalChart/WeeklyGoalChart';
-import ActivityCards from '../components/ActivityCards/ActivityCards';
-import UserCard from '../components/UserCard/UserCard';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import { AuthContext } from '../../context/AuthContext'; 
+import { useFetch } from '../../utils/hooks';
+import DistanceChart from '../../components/DistanceChart/DistanceChart';
+import HeartRateChart from '../../components/HeartRateChart/HeartRateChart';
+import WeeklyGoalChart from '../../components/WeeklyGoalChart/WeeklyGoalChart';
+import ActivityCards from '../../components/ActivityCards/ActivityCards';
+import UserCard from '../../components/UserCard/UserCard';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import './Dashboard.module.css';
 
 
 export default function Dashboard() {

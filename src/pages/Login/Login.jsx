@@ -1,12 +1,11 @@
 //L'AUDITEUR
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'; //le moteur (la radio)
+import { AuthContext } from '../../context/AuthContext'; //le moteur (la radio)
+import './Login.module.css';
 // Les images
 import logo from '../assets/Logo.svg';
 import loginpicture from '../assets/loginpicture.png';
-
-
 
 
 export default function Login() {

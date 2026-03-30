@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'; // <-- Ajout de useContext
-import { AuthContext } from '../context/AuthContext'; // <-- On importe la poche au bracelet VIP
-import { useFetch } from '../utils/hooks'; 
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
-import Profilinfo from '../components/ProfileInfo/ProfileInfo';
-import StatCard from '../components/StatCard/StatCard';
-
+import { AuthContext } from '../../context/AuthContext'; // <-- On importe la poche au bracelet VIP
+import { useFetch } from '../../utils/hooks'; 
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import Profilinfo from '../../components/ProfileInfo/ProfileInfo';
+import StatCard from '../../components/StatCard/StatCard';
+import './Profile.module.css';
 
 export default function Profil() {
     // 1.récupèration du bracelet VIP
