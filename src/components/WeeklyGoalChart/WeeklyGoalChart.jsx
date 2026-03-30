@@ -1,8 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-
-
-
+import './WeeklyGoalChart.module.css';
 
 export default function WeeklyGoalChart({ nombre }) {
     // On calcule les restants (objectif 6)

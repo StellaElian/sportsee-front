@@ -3,8 +3,8 @@ import { AuthContext } from '../context/AuthContext'; // <-- On importe la poche
 import { useFetch } from '../utils/hooks'; 
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Profilinfo from '../components/Profilinfo';
-import StatCard from '../components/StatCard';
+import Profilinfo from '../components/ProfileInfo/ProfileInfo';
+import StatCard from '../components/StatCard/StatCard';
 
 
 export default function Profil() {

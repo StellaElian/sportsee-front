@@ -1,4 +1,5 @@
 import React from 'react';
+import './StatCard.module.css';
 
 export default function StatCard({ titre, valeur, unite }) {
     return (

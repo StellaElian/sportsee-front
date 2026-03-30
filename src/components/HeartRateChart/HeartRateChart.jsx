@@ -1,6 +1,7 @@
 import React from 'react';
 // On importe ComposedChart, et on n'oublie pas Line (pour la courbe) et Bar (pour les barres)
 import { ResponsiveContainer, ComposedChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Line } from 'recharts';
+import './HeartRateChart.module.css';
 
 // --- NOTRE PETITE BULLE NOIRE (TOOLTIP) ---
 const CustomTooltip = ({ active, payload }) => {

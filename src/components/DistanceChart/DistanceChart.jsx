@@ -1,5 +1,6 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar } from 'recharts';
+import './DistanceChart.module.css';
 
 // --- LA BULLE NOIRE (TOOLTIP) ---
 const CustomTooltip = ({ active, payload }) => {
