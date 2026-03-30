@@ -1,4 +1,4 @@
-import OUTLINE from '../assets/OUTLINE.png';
+import OUTLINE from '../../assets/OUTLINE.png';
 import './UserCard.module.css';
 
 export default function UserCard({ userInfos, runningData }) {

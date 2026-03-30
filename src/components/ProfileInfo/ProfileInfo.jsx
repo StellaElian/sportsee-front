@@ -1,5 +1,5 @@
 import React from 'react';
-import line from '../assets/line.png';
+import line from '../../assets/line.png';
 import './ProfileInfo.module.css';
 
 // On réceptionne les "userInfos" qui ont été envoyées par la page Profil
