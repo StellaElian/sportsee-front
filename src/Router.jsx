@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 //j'importe notre radio (le Contexte) pour que le Vigile puisse l'entendre !
 import { AuthContext } from './context/AuthContext';
 
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Profil from './pages/Profil';
-import Error404 from './pages/Error404';
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Profil from './pages/Profile/Profile';
+import Error404 from './pages/Error404/Error404';
 
 // LE VIGILE
 function ProtectedRoute({ children }) {
