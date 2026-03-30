@@ -59,7 +59,7 @@ export default function Profil() {
                         }}>
                             <img
                                 src={userInfos.profilePicture} // <-- On utilise le lien qui vient du backend 
-                                alt="Photo de profil"
+                                alt="Profil de l'utilisateur"
                                 style={{ width: '104px', height: '117px', borderRadius: '10px', objectFit: 'cover' }}
                             />
 
