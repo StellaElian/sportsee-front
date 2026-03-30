@@ -1,4 +1,5 @@
 import React from 'react';
+import './ActivityCards.module.css';
 
 export default function ActivityCards({distance, duree}) {
     return (

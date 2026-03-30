@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import Logo from '../assets/Logo.svg';
+import './Header.module.css';
 
 export default function Header() {
     const navigate = useNavigate();

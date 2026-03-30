@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'; // <-- Ajout de useContext
 import { AuthContext } from '../context/AuthContext'; // <-- On importe la poche au bracelet VIP
 import { useFetch } from '../utils/hooks'; 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import Profilinfo from '../components/Profilinfo';
 import StatCard from '../components/StatCard';
 
