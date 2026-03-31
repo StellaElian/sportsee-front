@@ -1,0 +1,37 @@
+/* --- CONTENEUR PRINCIPAL --- */
+.container {
+    width: 508px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* --- TITRE --- */
+.title {
+    margin: 0 0 30px 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #111111;
+}
+
+/* --- LIGNE DE SÉPARATION --- */
+.separatorLine {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+/* --- CONTENEUR DES INFOS (Âge, Genre...) --- */
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 16px;
+    color: #111111;
+}
+
+/* --- LIBELLÉS GRIS (Âge :, Genre :, etc.) --- */
+.infoLabel {
+    color: #707070;
+}
