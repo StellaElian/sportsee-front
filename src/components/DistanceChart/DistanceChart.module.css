@@ -1,0 +1,121 @@
+/* --- LA BULLE NOIRE (TOOLTIP) --- */
+.tooltipContainer {
+    background-color: #000000;
+    color: #E7E7E7;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tooltipDate {
+    margin: 13px 23px 13px 2px;
+    font-size: 12px;
+    color: #E7E7E7;
+}
+
+.tooltipDistance {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* --- CONTENEUR PRINCIPAL --- */
+.chartWrapper {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    width: 445px;
+    height: 484px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- L'EN-TÊTE AVEC LE BOUTON DES DATES --- */
+.headerContainer {
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.headerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.averageTitle {
+    color: #0B23F4;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 25px;
+}
+
+.averageSubtitle {
+    color: #707070;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Partie droite (Date et flèches) */
+.dateNav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 400;
+    flex-shrink: 0;
+    height: 25px;
+}
+
+.navButton {
+    border: 1px solid #E0E0E0;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dateSpan {
+    white-space: nowrap;
+}
+
+/* --- LE GRAPHIQUE --- */
+.graphContainer {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* --- LA PETITE LÉGENDE "Km" EN BAS --- */
+.legendContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+}
+
+.legendDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #7987FF;
+}
+
+.legendText {
+    color: #707070;
+    font-size: 14px;
+    font-weight: 400;
+}
