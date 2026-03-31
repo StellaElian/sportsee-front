@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext'; //le moteur (la radio)
-import './Login.module.css';
+import styles from './Login.module.css';
 // Les images
 import logo from '../../assets/Logo.svg';
 import loginpicture from '../../assets/loginpicture.png';
@@ -51,68 +51,65 @@ export default function Login() {
 
     // --- Le visuel ---
     return (
-        <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F2F3FF' }}>
+        <div className={styles.loginWrapper}>
 
             {/* COLONNE GAUCHE (Logo + Formulaire) */}
-            <div style={{ flex: 1, paddingTop: '55px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+            <div className={styles.leftColumn}>
 
                 {/* Le Logo */}
-                <img src={logo} alt="Logo SportSee" style={{ height: '23.41px', marginRight: '260px' }} />
+                <img src={logo} alt="Logo SportSee" className={styles.logo} />
 
                 {/* Le bloc du formulaire */}
-                <div style={{ marginTop: '151px', width: '398px', backgroundColor: '#FFFFFF', borderRadius: '10px', marginLeft: 'auto', marginRight: 'auto', padding: '40px', boxSizing: 'border-box' }}>
-                    <h1 style={{ fontSize: '28px', fontWeight: '600', color: '#0B23F4', marginBottom: '40px', lineHeight: '1.2' }}>
+                <div className={styles.formContainer}>
+                    <h1 className={styles.mainTitle}>
                         Transformez <br /> vos stats en résultats
                     </h1>
 
-                    <form style={{ display: 'flex', flexDirection: 'column' }}>
+                    <form className={styles.formWrapper}>
 
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <label style={{ fontSize: '22px', fontWeight: '500', color: '#111111', marginBottom: '24px' }}>Se connecter</label>
-                            <label style={{ fontSize: '14px', fontWeight: '400', color: '#707070', marginBottom: '8px' }}>Adresse email</label>
+                        <div className={styles.inputGroup}>
+                            <label className={styles.loginLabelTitle}>Se connecter</label>
+                            <label className={styles.inputLabel}>Adresse email</label>
                             <input
                                 type="email"
                                 value={usernameInput}
                                 onChange={(e) => setUsernameInput(e.target.value)}
-                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171', marginBottom: '24px', fontSize: '14px', fontWeight: '400', color: '#707070' }}
+                                className={styles.emailInput}
                             />
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <label style={{ fontSize: '14px', fontWeight: '400', color: '#707070', marginBottom: '8px' }}>Mot de passe</label>
+                        <div className={styles.inputGroup}>
+                            <label className={styles.inputLabel}>Mot de passe</label>
                             <input
                                 type="password"
                                 value={passwordInput}
                                 onChange={(e) => setPasswordInput(e.target.value)}
-                                style={{ height: '58px', borderRadius: '10px', border: '1px solid #717171' }}
+                                className={styles.passwordInput}
                             />
                         </div>
 
                         {/* LE BOUTON CONNECTÉ AU MOTEUR ! */}
                         <button
-                            onClick={handleLogin} // On déclenche ta fonction ici !
-                            style={{
-                                marginTop: '40px', height: '51px', backgroundColor: '#0B23F4', color: '#E7E7E7',
-                                borderRadius: '10px', border: 'none', fontSize: '16px', fontWeight: '500', cursor: 'pointer'
-                            }}
+                            onClick={handleLogin} // On déclenche la fonction ici !
+                            className={styles.submitButton}
                         >
                             Se connecter
                         </button>
 
                     </form>
 
-                    <p style={{ marginTop: '40px', fontSize: '14px', fontWeight: '400', color: '#111111', cursor: 'pointer', textDecoration: 'underline' }}>
+                    <p className={styles.forgotPassword}>
                         Mot de passe oublié ?
                     </p>
                 </div>
             </div>
 
             {/* COLONNE DROITE (La grande image) */}
-            <div style={{ width: '808px', height: '1024px' }}>
+            <div className={styles.rightColumn}>
                 <img
                     src={loginpicture}
                     alt="Course à pied"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    className={styles.coverImage}
                 />
             </div>
 
