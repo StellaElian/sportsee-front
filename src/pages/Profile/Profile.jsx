@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext'; // <-- On importe la po
 import { useFetch } from '../../utils/hooks';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import Profilinfo from '../../components/ProfileInfo/ProfileInfo';
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
 import StatCard from '../../components/StatCard/StatCard';
 import styles from './Profile.module.css';
 
@@ -31,7 +31,7 @@ export default function Profil() {
 
 
     const totalCalories = stats.totalCalories;
-    const joursDeRepos = 9; // on garde le chiffre fictif---------------A MODIFIER APRES
+    const joursDeRepos = 9; // on garde le chiffre fictif--------------
 
     return (
         <div className={styles.pageWrapper}>
@@ -48,7 +48,7 @@ export default function Profil() {
                         <div className={styles.photoBox}>
                             <img
                                 src={userInfos.profilePicture} // <-- On utilise le lien qui vient du backend 
-                                alt="Profil de l'utilisateur"
+                                alt="Avatar de l'utilisateur"
                                 className={styles.profileImage}
                             />
 
@@ -63,7 +63,7 @@ export default function Profil() {
                         </div>
 
                         {/*On "passe" les vraies données de l'utilisateur (userInfos) au composant ProfilInfo grâce aux "props" */}
-                        <Profilinfo userInfos={userInfos} />
+                        <ProfileInfo userInfos={userInfos} />
                     </div>
 
                     {/* --- COLONNE DE DROITE (5 cartes) --- */}

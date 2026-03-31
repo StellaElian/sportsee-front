@@ -13,7 +13,7 @@ import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
     // On allume la radio pour entendre le bouton de déconnexion
-    const { logout, token } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
 
     // 🎣 Cap 1 : Les infos du profil (nom, photo...)
     const { data: infoData, isLoading: infoLoading, error: infoError } = useFetch('http://localhost:8000/api/user-info', token);
