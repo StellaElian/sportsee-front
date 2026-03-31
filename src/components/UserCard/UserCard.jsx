@@ -19,7 +19,7 @@ export default function UserCard({ userInfos, runningData }) {
             <div className={styles.leftPart}>
                 <img
                     src={userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
-                    alt="Profil de l'utilisateur"
+                    alt="Avatar de l'utilisateur"
                     className={styles.profilePic}
                 />
 
