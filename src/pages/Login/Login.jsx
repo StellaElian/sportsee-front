@@ -98,6 +98,13 @@ export default function Login() {
 
                     </form>
 
+                    {/* --- L'AFFICHAGE DE L'ERREUR mot de passe --- */}
+                    {erreurTexte && (
+                        <p className={styles.errorPassword}>
+                            {erreurTexte}
+                        </p>
+                    )}
+
                     <p className={styles.forgotPassword}>
                         Mot de passe oublié ?
                     </p>
