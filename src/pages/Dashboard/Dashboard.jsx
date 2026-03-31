@@ -8,7 +8,7 @@ import ActivityCards from '../../components/ActivityCards/ActivityCards';
 import UserCard from '../../components/UserCard/UserCard';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import './Dashboard.module.css';
+import styles from './Dashboard.module.css';
 
 
 export default function Dashboard() {
@@ -23,11 +23,11 @@ export default function Dashboard() {
 
     // On surveille nos deux cap en même temps
     if (infoLoading || activityLoading) {
-        return <div style={{ textAlign: 'center', marginTop: '100px', fontSize: '24px' }}>Patience, on pêche les données... 🎣</div>;
+        return <div className={styles.loadingMessage}>Patience, on pêche les données... 🎣</div>;
     }
 
     if (infoError || activityError || !infoData || !activityData) {
-        return <div style={{ textAlign: 'center', marginTop: '100px', color: 'red', fontSize: '24px' }}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
+        return <div className={styles.errorMessage}>Oups, impossible de récupérer vos données serveur !  🚨</div>;
     }
 
     const userData = {
@@ -42,36 +42,32 @@ export default function Dashboard() {
 
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-
+        <div className={styles.dashboardWrapper}>
             <Header />
-            <div style={{ backgroundColor: '#F2F3FF', flex: 1, padding: '50px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
+            <div className={styles.mainContent}>
                 <UserCard userInfos={userData.userInfos} runningData={userData.runningData} />
 
-                <div style={{ height: '40px' }}></div>
+                <div className={styles.spacer}></div>
 
-                <div style={{ width: '1052px' }}>
+                <div className={styles.dashboardGrid}>
 
-                    <p style={{ fontSize: '22px', color: '#111111', fontWeight: 'medium', marginBottom: '20px' }}>Vos dernières performances</p>
+                    <p className={styles.sectionTitle}>Vos dernières performances</p>
 
                     {/* --- GRAPHIQUE 163 BPM ET DISTANCE --- */}
-                    <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                    <div className={styles.chartsRowOne}>
                         <DistanceChart data={userData.runningData} />
                         <HeartRateChart data={userData.runningData} />
                     </div>
 
                     {/* --- graph Cette semaine --- */}
                     <div>
-                        <p style={{ fontSize: '22px', color: '#111111', fontWeight: '500', margin: '0 0 5px 0' }}>Cette semaine</p>
-                        <p style={{ color: '#707070', fontSize: '16px', marginBottom: '20px', fontWeight: '500' }}>Du 23/06/2025 au 30/06/2025</p>
-
-                        <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+                        <p className={styles.weekTitle}>Cette semaine</p>
+                        <p className={styles.weekSubtitle}>Du 23/06/2025 au 30/06/2025</p>
+                        <div className={styles.chartsRowTwo}>
                             <WeeklyGoalChart nombre={nombreDeCourses} />
                             <ActivityCards distance={totalDistance} duree={totalDuree} />
                         </div>
                     </div>
-
                 </div>
             </div>
             <Footer />
