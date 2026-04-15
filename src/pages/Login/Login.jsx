@@ -1,7 +1,7 @@
 //L'AUDITEUR
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext'; 
+import { AuthContext } from '../../context/AuthContext';
 import styles from './Login.module.css';
 
 import logo from '../../assets/Logo.svg';
@@ -25,16 +25,16 @@ export default function Login() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    username: usernameInput, 
-                    password: passwordInput  
+                    username: usernameInput,
+                    password: passwordInput
                 })
             });
 
             const data = await response.json();
 
             if (data.token) {
-                login(data.token); 
-                navigate('/dashboard'); 
+                login(data.token);
+                navigate('/dashboard');
             } else {
                 setErreurTexte(data.message || "Identifiants incorrects !");
             }
@@ -83,7 +83,7 @@ export default function Login() {
 
                         {/* BOUTON */}
                         <button
-                            onClick={handleLogin} 
+                            onClick={handleLogin}
                             className={styles.submitButton}
                         >
                             Se connecter
@@ -111,6 +111,13 @@ export default function Login() {
                     alt="Course à pied"
                     className={styles.coverImage}
                 />
+
+                {/* LA BULLE */}
+                <div className={styles.infoBubble}>
+                    Analysez vos performances en un clin d’œil,<br />
+                    suivez vos progrès et atteignez vos objectifs.
+                </div>
+
             </div>
 
         </div>
