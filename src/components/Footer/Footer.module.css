@@ -2,7 +2,7 @@
     width: 100%;
     background-color: #FFFFFF;
     display: flex;
-    justify-content: space-between; /* Sépare le texte de gauche et le menu de droite */
+    justify-content: space-between; 
     align-items: center;
     padding: 20px 100px;
     box-sizing: border-box;
@@ -10,7 +10,7 @@
     font-weight: 400;
     font-family: 'Inter';
     color: #111111;
-    margin-top: auto; /* Permet de bien le coller en bas de la page */
+    margin-top: auto; 
 }
 
 .rightPart {

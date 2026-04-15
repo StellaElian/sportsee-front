@@ -3,7 +3,6 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styles from './WeeklyGoalChart.module.css';
 
 export default function WeeklyGoalChart({ nombre }) {
-    // On calcule les restants (objectif 6)
     const restants = 6 - nombre < 0 ? 0 : 6 - nombre;
     // --- LES DONNÉES ---
     const data = [
@@ -16,7 +15,7 @@ export default function WeeklyGoalChart({ nombre }) {
         // LE GRAND ENCADRÉ
         <div className={styles.chartContainer}>
 
-            {/* L'EN-TÊTE DU GRAPHIQUE */}
+            {/* L'EN-TÊTE GRAPHIQUE */}
             <div className={styles.headerContainer}>
                 <h3 className={styles.headerTitle}>
                     <span className={styles.headerHighlight}>x{nombre}</span> sur objectif de 6
@@ -24,22 +23,22 @@ export default function WeeklyGoalChart({ nombre }) {
                 <p className={styles.headerSubtitle}>Courses hebdomadaires réalisées</p>
             </div>
 
-            {/* LA BOÎTE (306 x 190) - avec position relative */}
+            {/* LA BOÎTE */}
             <div className={styles.chartBox}>
 
-                {/* LE GRAPHIQUE AU CENTRE */}
+                {/* GRAPHIQUE AU CENTRE */}
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={data}
-                            cx="50%" // Centré horizontalement
-                            cy="50%" // Centré verticalement
-                            innerRadius={40} // Taille du trou
-                            outerRadius={76} // 162 / 2 (La taille exacte de Figma)
-                            startAngle={0} // Ton réglage parfait
-                            endAngle={-360} // Ton réglage parfait
+                            cx="50%" 
+                            cy="50%" 
+                            innerRadius={40} 
+                            outerRadius={76} 
+                            startAngle={0} 
+                            endAngle={-360} 
                             dataKey="value"
-                            stroke="none" // On enlève la bordure blanche entre les parts
+                            stroke="none" 
                         >
                             {data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
@@ -48,15 +47,15 @@ export default function WeeklyGoalChart({ nombre }) {
                     </PieChart>
                 </ResponsiveContainer>
 
-                {/* --- NOS ÉTIQUETTES--- */}
+                {/* --- ÉTIQUETTES--- */}
 
-                {/* Étiquette : 2 restants (En haut à droite de la boîte de 306x190) */}
+                {/* restants */}
                 <div className={styles.labelTopRight}>
                     <div className={styles.dotRestants}></div>
                     <span className={styles.labelText}>{restants} restants</span>
                 </div>
 
-                {/* Étiquette : 4 réalisées (En bas à gauche de la boîte de 306x190) */}
+                {/* réalisées */}
                 <div className={styles.labelBottomLeft}>
                     <div className={styles.dotRealisees}></div>
                     <span className={styles.labelText}>{nombre} réalisées</span>

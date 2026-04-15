@@ -3,7 +3,6 @@ import styles from './ActivityCards.module.css';
 
 export default function ActivityCards({distance, duree}) {
     return (
-        // Le conteneur global :centrage vertical
         <div className={styles.container}>
             {/* --- CARTE 1 : Durée d'activité --- */}
             <div className={styles.card}>

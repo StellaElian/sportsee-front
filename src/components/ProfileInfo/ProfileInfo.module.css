@@ -1,4 +1,4 @@
-/* --- CONTENEUR PRINCIPAL --- */
+
 .container {
     width: 508px;
     background-color: #FFFFFF;
@@ -7,7 +7,6 @@
     box-sizing: border-box;
 }
 
-/* --- TITRE --- */
 .title {
     margin: 0 0 30px 0;
     font-size: 22px;
@@ -15,14 +14,12 @@
     color: #111111;
 }
 
-/* --- LIGNE DE SÉPARATION --- */
 .separatorLine {
     margin-top: 24px;
     margin-bottom: 32px;
     width: 100%;
 }
 
-/* --- CONTENEUR DES INFOS (Âge, Genre...) --- */
 .infoContainer {
     display: flex;
     flex-direction: column;
@@ -31,7 +28,6 @@
     color: #111111;
 }
 
-/* --- LIBELLÉS GRIS (Âge , Genre , etc.) --- */
 .infoLabel {
     color: #707070;
 }

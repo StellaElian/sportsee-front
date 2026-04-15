@@ -2,10 +2,10 @@ import React from 'react';
 import line from '../../assets/line.png';
 import styles from './ProfileInfo.module.css';
 
-// On réceptionne les "userInfos" qui ont été envoyées par la page Profil
+
 export default function ProfilInfo({ userInfos }) {
 
-    // TRADUCTEUR: On gère l'anglais ET le français du backend 
+    // TRADUCTEUR
     let genreFR = "Non précisé";
     if (userInfos.gender === 'female' || userInfos.gender === 'femme' || userInfos.gender === 'Femme') {
         genreFR = "Femme";
@@ -28,7 +28,6 @@ export default function ProfilInfo({ userInfos }) {
                 alt="Ligne de séparation"
                 className={styles.separatorLine}
             />
-            {/* EXPLICATION : On affiche maintenant les variables dynamiques ! */}
             <div className={styles.infoContainer}>
                 <div><span className={styles.infoLabel}>Âge :</span> {userInfos.age}</div>
                 <div><span className={styles.infoLabel}>Genre :</span> {genreFR}</div>

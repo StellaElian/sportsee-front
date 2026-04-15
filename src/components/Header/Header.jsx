@@ -7,12 +7,11 @@ import styles from './Header.module.css';
 
 export default function Header() {
     const navigate = useNavigate();
-    // On récupère la fonction logout (dans mon AuthContext)
     const { logout } = useContext(AuthContext);
 
     const handleLogout = () => {
-        if (logout) logout(); // Déchire le faux badge
-        navigate('/login');   // Renvoie à l'accueil
+        if (logout) logout(); 
+        navigate('/login');   
     };
 
     return (

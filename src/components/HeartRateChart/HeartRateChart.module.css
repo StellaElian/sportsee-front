@@ -1,4 +1,4 @@
-/* --- TOOLTIP --- */
+
 .tooltipWrapper {
   background-color: #717171;
   color: #ffffff;
@@ -31,7 +31,7 @@
   color: #0B23F4;
 }
 
-/* --- CONTENEUR PRINCIPAL --- */
+
 .chartContainer {
   background-color: #FFFFFF;
   padding: 30px;
@@ -43,7 +43,7 @@
   flex-direction: column;
 }
 
-/* --- EN-TÊTE --- */
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -103,14 +103,12 @@
   white-space: nowrap;
 }
 
-/* --- GRAPHIQUE COMPOSÉ --- */
 .chartWrapper {
   flex: 1;
   width: 100%;
   margin-bottom: 20px;
 }
 
-/* --- LÉGENDE --- */
 .legendContainer {
   display: flex;
   align-items: center;

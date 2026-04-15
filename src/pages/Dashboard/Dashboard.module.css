@@ -1,4 +1,4 @@
-/* --- Messages d'attente et d'erreur --- */
+
 .loadingMessage {
     text-align: center;
     margin-top: 100px;
@@ -12,7 +12,6 @@
     font-size: 24px;
 }
 
-/* --- Structure Principale --- */
 .dashboardWrapper {
     min-height: 100vh;
     display: flex;
@@ -36,7 +35,6 @@
     width: 1052px;
 }
 
-/* --- Typographie et Titres --- */
 .sectionTitle {
     font-size: 22px;
     color: #111111;
@@ -58,7 +56,6 @@
     font-weight: 500;
 }
 
-/* --- Conteneurs Flex pour les Graphiques --- */
 .chartsRowOne {
     display: flex;
     gap: 24px;

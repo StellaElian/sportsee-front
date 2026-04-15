@@ -3,7 +3,7 @@ import styles from './UserCard.module.css';
 
 export default function UserCard({ userInfos, runningData }) {
 
-    // On additionne tous les kilomètres de l'user pour les afficher dans la boîte bleue
+    // addition des kilomètres de l'user
     const totalDistance = runningData.reduce((total, jour) => total + jour.distance, 0).toFixed(1);
 
     // On transforme la date "2025-01-01" en "1 janvier 2025"
@@ -12,13 +12,13 @@ export default function UserCard({ userInfos, runningData }) {
     });
 
     return (
-        // LE GRAND CADRE BLANC 
+        // GRAND CADRE BLANC 
         <div className={styles.cardContainer}>
 
             {/* --- PARTIE GAUCHE (Image + Nom) --- */}
             <div className={styles.leftPart}>
                 <img
-                    src={userInfos.profilePicture} // <-- MAGIE : On utilise le lien qui vient du backend !
+                    src={userInfos.profilePicture}
                     alt="Avatar de l'utilisateur"
                     className={styles.profilePic}
                 />

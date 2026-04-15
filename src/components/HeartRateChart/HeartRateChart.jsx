@@ -1,9 +1,8 @@
 import React from 'react';
-// On importe ComposedChart, et on n'oublie pas Line (pour la courbe) et Bar (pour les barres)
 import { ResponsiveContainer, ComposedChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Line } from 'recharts';
 import styles from './HeartRateChart.module.css';
 
-// --- NOTRE PETITE BULLE NOIRE (TOOLTIP) ---
+// --- BULLE NOIRE (TOOLTIP) ---
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -20,8 +19,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 export default function HeartRateChart({ data }) {
 
-  // --- 1. LE ROBOT FORMATTEUR ---
-  // On prend les 7 premiers jours et on extrait le min, max et average.
+  // --- LE ROBOT FORMATTEUR ---
   const jours = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
   const formattedData = data.slice(0, 7).map((jour, index) => {
     return {
@@ -33,10 +31,9 @@ export default function HeartRateChart({ data }) {
   });
 
   return (
-    // AJOUT DE FLEXBOX ICI POUR GERER LA HAUTEUR DE 484px
     <div className={styles.chartContainer}>
 
-      {/* --- 2. L'EN-TÊTE (Alignement strict comme le précédent) --- */}
+      {/* ---  L'EN-TÊTE --- */}
       <div className={styles.headerContainer}>
         <div className={styles.headerLeft}>
           <h3 className={styles.bpmTitle}>163 BPM</h3>
@@ -50,8 +47,7 @@ export default function HeartRateChart({ data }) {
         </div>
       </div>
 
-      {/* --- 3. LE GRAPHIQUE COMPOSÉ --- */}
-      {/* REMPLACEMENT DE HEIGHT 220px PAR FLEX 1 POUR QU'IL REMPLISSE L'ESPACE */}
+      {/* --- GRAPHIQUE COMPOSÉ --- */}
       <div className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={formattedData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
@@ -60,23 +56,21 @@ export default function HeartRateChart({ data }) {
 
             <XAxis dataKey="jour" tick={{ fill: '#707070' }} tickLine={false} axisLine={{ stroke: '#282D30' }} tickMargin={10} />
 
-            {/* L'axe Y : On lui dit de s'adapter aux battements de coeur (ex: de 130 à 190) */}
             <YAxis tick={{ fill: '#707070' }} tickLine={false} axisLine={{ stroke: '#282D30' }} tickMargin={10} domain={['dataMin - 5', 'dataMax + 5']} />
 
             <Tooltip content={<CustomTooltip />} cursor={false} />
 
-            {/* Les 2 barres (elles vont se mettre côte à côte toutes seules !) */}
             <Bar dataKey="min" fill="#FCC1B6" radius={[30, 30, 30, 30]} barSize={14} />
             <Bar dataKey="max" fill="#F4320B" radius={[30, 30, 30, 30]} barSize={14} />
 
-            {/* La ligne bleue qui ondule (monotone) par dessus les barres */}
+            {/* La ligne bleue */}
             <Line type="monotone" dataKey="average" stroke="#F2F3FF" strokeWidth={3} dot={{ r: 4, fill: '#0B23F4' }} />
 
           </ComposedChart>
         </ResponsiveContainer>
       </div>
 
-      {/* --- 4. LA LÉGENDE --- */}
+      {/* --- LA LÉGENDE --- */}
       <div className={styles.legendContainer}>
         <div className={styles.legendItem}>
           <div className={styles.dotMin}></div> Min

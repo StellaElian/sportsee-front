@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'; // <-- Ajout de useContext
-import { AuthContext } from '../../context/AuthContext'; // <-- On importe la poche au bracelet VIP
+import React, { useContext } from 'react'; 
+import { AuthContext } from '../../context/AuthContext'; 
 import { useFetch } from '../../utils/hooks';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -8,30 +8,27 @@ import StatCard from '../../components/StatCard/StatCard';
 import styles from './Profile.module.css';
 
 export default function Profil() {
-    // 1.récupèration du bracelet VIP
     const { token } = useContext(AuthContext);
 
-    // lancement cap vers les infos de l'utilisateur
     const { data, isLoading, error } = useFetch('http://localhost:8000/api/user-info', token);
 
     // pancartes d'attente
     if (isLoading) return <div className={styles.loading}>Chargement du profil... ⏳</div>;
     if (error || !data) return <div className={styles.error}>Erreur serveur 🚨</div>;
 
-    // On extrait les données du vrai serveur
     const userInfos = data.profile;
     const stats = data.statistics; // Le backend nous donne ces calculs 
 
-    // --- LES CALCULS POUR LES CARTES STATISTIQUES ---
+    // --- CALCULS POUR LES CARTES STATISTIQUES ---
     const heures = Math.floor(stats.totalDuration / 60);
     const minutesRestantes = stats.totalDuration % 60;
 
-    const totalDistance = stats.totalDistance; // Déjà calculé par le backend
-    const totalSessions = stats.totalSessions; // Déjà calculé par le backend
+    const totalDistance = stats.totalDistance; 
+    const totalSessions = stats.totalSessions; 
 
 
     const totalCalories = stats.totalCalories;
-    const joursDeRepos = 9; // on garde le chiffre fictif--------------
+    const joursDeRepos = 9;
 
     return (
         <div className={styles.pageWrapper}>
@@ -44,10 +41,10 @@ export default function Profil() {
                     {/* --- COLONNE DE GAUCHE --- */}
                     <div className={styles.leftColumn}>
 
-                        {/* --- BOÎTE PHOTO --- */}
+                        {/* --- PHOTO --- */}
                         <div className={styles.photoBox}>
                             <img
-                                src={userInfos.profilePicture} // <-- On utilise le lien qui vient du backend 
+                                src={userInfos.profilePicture} 
                                 alt="Avatar de l'utilisateur"
                                 className={styles.profileImage}
                             />
@@ -66,13 +63,12 @@ export default function Profil() {
                         <ProfileInfo userInfos={userInfos} />
                     </div>
 
-                    {/* --- COLONNE DE DROITE (5 cartes) --- */}
+                    {/* --- COLONNE DE DROITE --- */}
                     <div className={styles.rightColumn}>
                         <h2 className={styles.statsTitle}>
                             Vos statistiques <span className={styles.statsSubtitle}>depuis le 14 juin 2023</span>
                         </h2>
 
-                        {/* LA GRILLE DES 5 CARTES (flexWrap permet de les faire passer à la ligne) */}
                         <div className={styles.statsGrid}>
                             <StatCard titre="Temps total couru" valeur={`${heures}h`} unite={`${minutesRestantes}min`} />
                             <StatCard titre="Calories brûlées" valeur={totalCalories} unite="cal" />

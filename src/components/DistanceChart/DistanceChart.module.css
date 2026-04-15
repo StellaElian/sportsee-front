@@ -1,4 +1,4 @@
-/* --- LA BULLE NOIRE (TOOLTIP) --- */
+
 .tooltipContainer {
     background-color: #000000;
     color: #E7E7E7;
@@ -19,7 +19,6 @@
     font-weight: 500;
 }
 
-/* --- CONTENEUR PRINCIPAL --- */
 .chartWrapper {
     background-color: #FFFFFF;
     padding: 30px;
@@ -31,7 +30,6 @@
     flex-direction: column;
 }
 
-/* --- L'EN-TÊTE AVEC LE BOUTON DES DATES --- */
 .headerContainer {
     display: flex;
     gap: 5px;
@@ -63,7 +61,7 @@
     white-space: nowrap;
 }
 
-/* Partie droite (Date et flèches) */
+
 .dateNav {
     display: flex;
     align-items: center;
@@ -92,14 +90,12 @@
     white-space: nowrap;
 }
 
-/* --- LE GRAPHIQUE --- */
 .graphContainer {
     flex: 1;
     width: 100%;
     margin-bottom: 20px;
 }
 
-/* --- LA PETITE LÉGENDE "Km" EN BAS --- */
 .legendContainer {
     display: flex;
     align-items: center;

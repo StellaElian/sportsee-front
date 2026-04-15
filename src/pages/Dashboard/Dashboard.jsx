@@ -12,16 +12,14 @@ import styles from './Dashboard.module.css';
 
 
 export default function Dashboard() {
-    // On allume la radio pour entendre le bouton de déconnexion
     const { token } = useContext(AuthContext);
 
-    // 🎣 Cap 1 : Les infos du profil (nom, photo...)
+    // infos du profil (nom, photo...)
     const { data: infoData, isLoading: infoLoading, error: infoError } = useFetch('http://localhost:8000/api/user-info', token);
 
-    // 🎣 Cap 2 : Les activités sportives (les graphiques !)
+    // les graphiques
     const { data: activityData, isLoading: activityLoading, error: activityError } = useFetch('http://localhost:8000/api/user-activity?startWeek=2025-05-28&endWeek=2025-06-30', token);
 
-    // On surveille nos deux cap en même temps
     if (infoLoading || activityLoading) {
         return <div className={styles.loadingMessage}>Patience, on pêche les données... 🎣</div>;
     }

@@ -1,24 +1,21 @@
 //L'AUDITEUR
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext'; //le moteur (la radio)
+import { AuthContext } from '../../context/AuthContext'; 
 import styles from './Login.module.css';
-// Les images
+
 import logo from '../../assets/Logo.svg';
 import loginpicture from '../../assets/loginpicture.png';
 
 
 export default function Login() {
-    // --- LES VARIABLES QUI LISENT TES CASES ---
     const [usernameInput, setUsernameInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     const [erreurTexte, setErreurTexte] = useState("");
 
-    // --- LE MOTEUR (Ton code logique) ---
     const navigate = useNavigate();
     const { login } = useContext(AuthContext); // On récupère la fonction pour donner le badge
 
-    // --- LE MOTEUR (La vraie connexion !) ---
     const handleLogin = async (e) => {
         e.preventDefault();
         setErreurTexte("");
@@ -28,18 +25,17 @@ export default function Login() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    username: usernameInput, // On envoie ce qui es tapé !
-                    password: passwordInput  // On envoie ce qui es tapé !
+                    username: usernameInput, 
+                    password: passwordInput  
                 })
             });
 
             const data = await response.json();
 
             if (data.token) {
-                login(data.token); // On récupère le bracelet VIP
-                navigate('/dashboard'); // On ouvre les portes !
+                login(data.token); 
+                navigate('/dashboard'); 
             } else {
-                // On affiche la vraie raison du refus 
                 setErreurTexte(data.message || "Identifiants incorrects !");
             }
         } catch (err) {
@@ -47,19 +43,16 @@ export default function Login() {
         }
     };
 
-
-
-    // --- Le visuel ---
     return (
         <div className={styles.loginWrapper}>
 
-            {/* COLONNE GAUCHE (Logo + Formulaire) */}
+            {/* COLONNE GAUCHE */}
             <div className={styles.leftColumn}>
 
                 {/* Le Logo */}
                 <img src={logo} alt="Logo SportSee" className={styles.logo} />
 
-                {/* Le bloc du formulaire */}
+                {/* formulaire */}
                 <div className={styles.formContainer}>
                     <h1 className={styles.mainTitle}>
                         Transformez <br /> vos stats en résultats
@@ -88,9 +81,9 @@ export default function Login() {
                             />
                         </div>
 
-                        {/* LE BOUTON CONNECTÉ AU MOTEUR ! */}
+                        {/* BOUTON */}
                         <button
-                            onClick={handleLogin} // On déclenche la fonction ici !
+                            onClick={handleLogin} 
                             className={styles.submitButton}
                         >
                             Se connecter
@@ -98,7 +91,7 @@ export default function Login() {
 
                     </form>
 
-                    {/* --- L'AFFICHAGE DE L'ERREUR mot de passe --- */}
+                    {/* --- ERREUR mdp --- */}
                     {erreurTexte && (
                         <p className={styles.errorPassword}>
                             {erreurTexte}
@@ -111,7 +104,7 @@ export default function Login() {
                 </div>
             </div>
 
-            {/* COLONNE DROITE (La grande image) */}
+            {/* COLONNE DROITE */}
             <div className={styles.rightColumn}>
                 <img
                     src={loginpicture}

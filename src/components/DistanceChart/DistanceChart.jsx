@@ -4,13 +4,10 @@ import styles from './DistanceChart.module.css';
 
 // --- LA BULLE NOIRE (TOOLTIP) ---
 const CustomTooltip = ({ active, payload }) => {
-  // "payload" est la valise qui contient les données de la barre qu'on survole
   if (active && payload && payload.length) {
     return (
       <div className={styles.tooltipContainer}>
-        {/* On affiche la date */}
         <p className={styles.tooltipDate}>{payload[0].payload.date}</p>
-        {/* On affiche les kilomètres */}
         <p className={styles.tooltipDistance}>{`${payload[0].value} km`}</p>
       </div>
     );
@@ -23,7 +20,7 @@ export default function DistanceChart({ data }) {
   // Sécurité : si pas de data on met un tableau vide
   const safeData = data || [];
 
-  // (On calcule + divise le total des courses par 4)
+  // (On calcule le total des courses par 4)
   const chunkSize = Math.ceil(safeData.length / 4) || 1;
 
   //On remplit nos 4 semaines
@@ -50,7 +47,6 @@ export default function DistanceChart({ data }) {
     }
   ];
   return (
-    // On met la largeur à 445px, la hauteur à 484px et on utilise display flex !
     <div className={styles.chartWrapper}>
 
       {/* --- L'EN-TÊTE AVEC LE BOUTON DES DATES --- */}
@@ -58,13 +54,11 @@ export default function DistanceChart({ data }) {
 
         {/* Partie gauche */}
         <div className={styles.headerLeft}>
-          {/* lineHeight force le texte à avoir une hauteur exacte pour s'aligner avec les boutons de droite */}
           <h3 className={styles.averageTitle}>18km en moyenne</h3>
           <p className={styles.averageSubtitle}>Total des kilomètres 4 dernières semaines</p>
         </div>
 
         {/* Partie droite (Date et flèches) */}
-        {/* flexShrink: 0 est la commande magique qui INTERDIT au navigateur d'écraser le bloc */}
         <div className={styles.dateNav}>
           <button className={styles.navButton}>{"<"}</button>
           <span className={styles.dateSpan}>28 mai - 25 juin</span>
@@ -74,16 +68,12 @@ export default function DistanceChart({ data }) {
       </div>
 
       {/* --- LE GRAPHIQUE --- */}
-      {/* utilisation de flex: 1 pour que le graphique s'étire bien dans la hauteur */}
       <div className={styles.graphContainer}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={formattedData} margin={{ top: 0, right: 45, left: -20, bottom: 0}}>
 
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-
-            {/* On a remis axisLine avec une couleur noire pour afficher les traits des axes ! */}
             <XAxis dataKey="nomDeLaBarre" tick={{ fill: '#707070' }} tickLine={false} axisLine={{ stroke: '#282D30' }} tickMargin={10} />
-            {/* tickCount={4} pour ne faire que 4 paliers + tickMargin={10} recule les chiffres pour créer de l'espace */}
             <YAxis
               tick={{ fill: '#707070' }}
               tickLine={false}
@@ -93,7 +83,6 @@ export default function DistanceChart({ data }) {
             />
             <Tooltip content={<CustomTooltip />} cursor={false} />
 
-            {/* Les barres bleues (couleur de la maquette) et en forme de pilules */}
             <Bar dataKey="distanceEnKm" fill="#B6BDFC" radius={[30, 30, 30, 30]} barSize={15} />
 
           </BarChart>

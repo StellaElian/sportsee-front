@@ -1,4 +1,4 @@
-/* Le conteneur global :centrage vertical */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     height: 342px;
 }
 
-/* Base commune pour les cartes */
+
 .card {
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -20,7 +20,7 @@
     gap: 19px;
 }
 
-/* Titre gris commun ("Durée d'activité", "Distance totale...") */
+
 .cardTitle {
     margin: 0;
     font-size: 14px;
@@ -28,12 +28,12 @@
     color: #707070;
 }
 
-/* Conteneur pour le texte de la valeur */
+
 .valueContainer {
     margin: 0;
 }
 
-/* --- Durée Spécifique --- */
+
 .durationValue {
     font-size: 22px;
     font-weight: 500;
@@ -46,7 +46,7 @@
     margin-left: 4px;
 }
 
-/* --- Distance Spécifique --- */
+
 .distanceValue {
     font-size: 22px;
     font-weight: 500;
