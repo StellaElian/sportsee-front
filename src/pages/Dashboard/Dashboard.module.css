@@ -68,3 +68,15 @@
     gap: 30px;
     align-items: flex-start;
 }
+
+@media (max-width: 1240px) {
+    .dashboardGrid {
+        width: 95%;
+        max-width: 1024px; 
+        padding: 0 20px;
+    }
+    .chartsRowOne {
+        gap: 15px;
+        justify-content: center;
+    }
+}

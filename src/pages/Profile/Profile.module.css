@@ -93,3 +93,14 @@
     flex-wrap: wrap;
     gap: 19px;
 }
+
+@media (max-width: 1200px) {
+    .contentLayout {
+        width: 95%;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    .photoBox {
+        width: auto;
+    }
+}
